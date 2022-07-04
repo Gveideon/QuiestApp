@@ -9,7 +9,6 @@ namespace QuestConsole
             Console.WriteLine("bye");
             Console.WriteLine("bye");
             Console.WriteLine("bye");
-
             Console.ReadKey();
         }
     }
