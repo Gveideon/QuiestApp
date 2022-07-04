@@ -37,17 +37,17 @@ namespace QuestEngine
         private void LoadQuest() 
         {
             currentStep = FileProvider<Step>.ReadObject(path); 
-            if(currentStep != null)
-            {
-                Update();
-            }
+            Update();
 
         }
         private void Update() 
         {
-            CurrentPhrase = currentStep.Phrase;
-            CurrentNumberBackground = currentStep.NumberPicture;
-            IsEnd = currentStep.IsEndStep;
+            if (currentStep != null)
+            {
+                CurrentPhrase = currentStep.Phrase;
+                CurrentNumberBackground = currentStep.NumberPicture;
+                IsEnd = currentStep.IsEndStep;
+            }
         }
     }
 
