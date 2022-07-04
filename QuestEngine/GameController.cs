@@ -1,5 +1,7 @@
 ﻿using System.Text.Json;
 using System.IO;
+using System.Windows;
+using Microsoft.Win32;
 namespace QuestEngine
 {
     public class GameController
@@ -35,7 +37,11 @@ namespace QuestEngine
         }
         private void LoadQuest() 
         {
-            currentStep = FileProvider<Step>.ReadObject(path); 
+            currentStep = FileProvider<Step>.ReadObject(path);
+            if (currentStep == null)
+            {
+                return;
+            }
             Update();
 
         }
