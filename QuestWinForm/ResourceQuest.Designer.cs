@@ -63,6 +63,16 @@ namespace QuestWinForm {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Background_start {
+            get {
+                object obj = ResourceManager.GetObject("Background_start", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Image_1 {
             get {
                 object obj = ResourceManager.GetObject("Image_1", resourceCulture);

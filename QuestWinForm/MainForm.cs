@@ -14,6 +14,7 @@ namespace QuestWinForm
         private void MainForm_Load(object sender, EventArgs e)
         {
             _gameController = new GameController();
+            fieldForPhrase.BackColor = Color.FromArgb(214, 243, 101);
         }
 
         private void buttonAgressiveAction_Click(object sender, EventArgs e)
