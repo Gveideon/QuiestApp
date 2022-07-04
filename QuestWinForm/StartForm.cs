@@ -17,11 +17,22 @@ namespace QuestWinForm
             InitializeComponent();
         }
 
+        private void StartForm_Load(object sender, EventArgs e)
+        {
+            timer.Start();
+        }
+
         private void buttonStart_Click(object sender, EventArgs e)
         {
             Hide();
+            timer.Stop();
             new MainForm().Show();
             Close();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }
