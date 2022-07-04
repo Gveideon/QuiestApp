@@ -19,21 +19,33 @@ namespace QuestWinForm
         private void buttonAgressiveAction_Click(object sender, EventArgs e)
         {
             _gameController.MakeAggressiveAction();
+            UpdateBackground();
         }
 
         private void buttonFriendlyAction_Click(object sender, EventArgs e)
         {
             _gameController.MakeFriendlyAction();
+            UpdateBackground();
         }
 
         private void buttonIgnoreAction_Click(object sender, EventArgs e)
         {
             _gameController.MakeIgnoreAction();
+            UpdateBackground();
         }
 
         private void UpdateBackground()
         {
-            //BackgroundImage
+            var number = _gameController.CurrentNumberBackground;
+            BackgroundImage = ChangeImage(number);
+        }
+
+        private Bitmap? ChangeImage(int number)
+        {
+            string name = $"Image_{number}";
+            var resource = ResourceQuest.ResourceManager.GetObject(name);
+            if (resource == null) return null;
+            return resource as Bitmap;
         }
     }
 }
