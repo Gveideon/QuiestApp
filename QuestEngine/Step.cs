@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuestEngine
 {
-    internal class Step
+    public class Step
     {
         public string Name { get; private set; } = "step";
         public string Phrase { get; private set; } = "base phrase";

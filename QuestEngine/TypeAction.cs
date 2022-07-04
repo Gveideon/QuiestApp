@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace QuestEngine
 {
-    internal enum TypeAction
+    public enum TypeAction
     {
+        Empty,
         Agressive,
         Friendly,
         Ignore
