@@ -11,9 +11,10 @@ namespace QuestConsole
             (a, b) = (b, a);
             Console.WriteLine(a);
             Console.WriteLine(b);
-            Console.WriteLine("bye");
-            Console.WriteLine("bye");
-            Console.WriteLine("bye");
+            Console.WriteLine("byeeeee");
+            Console.WriteLine("byeeeee");
+            Console.WriteLine("byeee");
+            (b, a) = (a, b);
             Console.ReadKey();
         }
     }
