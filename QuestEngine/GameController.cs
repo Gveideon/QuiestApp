@@ -1,6 +1,5 @@
 ﻿using System.Text.Json;
 using System.IO;
-гышт
 namespace QuestEngine
 {
     public class GameController
