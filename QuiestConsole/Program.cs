@@ -6,7 +6,7 @@ namespace QuestConsole
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello");
+            Console.WriteLine("Helloooooooooo");
            
             Console.ReadKey();
         }
