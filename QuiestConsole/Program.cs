@@ -6,9 +6,11 @@ namespace QuestConsole
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Helloooooooooo");
-           
-            Console.ReadKey();
+            int a = 0;
+            int b = 2;
+            (a, b) = (b, a);
+            Console.WriteLine(a);
+            Console.WriteLine(b);
         }
     }
 }
