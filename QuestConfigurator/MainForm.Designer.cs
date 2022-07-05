@@ -38,15 +38,18 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.fieldNumberPicture = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.fieldAction = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.fieldVariants = new System.Windows.Forms.ListBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.fieldIsEnd = new System.Windows.Forms.CheckBox();
             this.buttonAddVariant = new System.Windows.Forms.Button();
             this.buttonOpenVariant = new System.Windows.Forms.Button();
-            this.listSteps = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.buttonSaveChange = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.listSteps = new System.Windows.Forms.ListBox();
+            this.fieldVariants = new System.Windows.Forms.ComboBox();
+            this.fieldAction = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.fieldNumberPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,6 +80,7 @@
             this.buttonOpenFile.TabIndex = 2;
             this.buttonOpenFile.Text = "Open File";
             this.buttonOpenFile.UseVisualStyleBackColor = true;
+            this.buttonOpenFile.Click += new System.EventHandler(this.buttonOpenFile_Click);
             // 
             // buttonSaveFile
             // 
@@ -86,6 +90,7 @@
             this.buttonSaveFile.TabIndex = 3;
             this.buttonSaveFile.Text = "Save File";
             this.buttonSaveFile.UseVisualStyleBackColor = true;
+            this.buttonSaveFile.Click += new System.EventHandler(this.buttonSaveFile_Click);
             // 
             // label2
             // 
@@ -137,19 +142,6 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Num pic";
             // 
-            // fieldAction
-            // 
-            this.fieldAction.FormattingEnabled = true;
-            this.fieldAction.ItemHeight = 28;
-            this.fieldAction.Items.AddRange(new object[] {
-            " Agressive",
-            " Friendly",
-            " Ignore"});
-            this.fieldAction.Location = new System.Drawing.Point(108, 356);
-            this.fieldAction.Name = "fieldAction";
-            this.fieldAction.Size = new System.Drawing.Size(428, 32);
-            this.fieldAction.TabIndex = 8;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -170,24 +162,15 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Variants";
             // 
-            // fieldVariants
+            // fieldIsEnd
             // 
-            this.fieldVariants.FormattingEnabled = true;
-            this.fieldVariants.ItemHeight = 28;
-            this.fieldVariants.Location = new System.Drawing.Point(108, 394);
-            this.fieldVariants.Name = "fieldVariants";
-            this.fieldVariants.Size = new System.Drawing.Size(428, 32);
-            this.fieldVariants.TabIndex = 10;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(108, 432);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(85, 32);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "is end";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.fieldIsEnd.AutoSize = true;
+            this.fieldIsEnd.Location = new System.Drawing.Point(108, 432);
+            this.fieldIsEnd.Name = "fieldIsEnd";
+            this.fieldIsEnd.Size = new System.Drawing.Size(85, 32);
+            this.fieldIsEnd.TabIndex = 12;
+            this.fieldIsEnd.Text = "is end";
+            this.fieldIsEnd.UseVisualStyleBackColor = true;
             // 
             // buttonAddVariant
             // 
@@ -197,6 +180,7 @@
             this.buttonAddVariant.TabIndex = 13;
             this.buttonAddVariant.Text = "Add varianrt";
             this.buttonAddVariant.UseVisualStyleBackColor = true;
+            this.buttonAddVariant.Click += new System.EventHandler(this.buttonAddVariant_Click);
             // 
             // buttonOpenVariant
             // 
@@ -204,16 +188,9 @@
             this.buttonOpenVariant.Name = "buttonOpenVariant";
             this.buttonOpenVariant.Size = new System.Drawing.Size(142, 43);
             this.buttonOpenVariant.TabIndex = 14;
-            this.buttonOpenVariant.Text = "open variant";
+            this.buttonOpenVariant.Text = "Open variant";
             this.buttonOpenVariant.UseVisualStyleBackColor = true;
-            // 
-            // listSteps
-            // 
-            this.listSteps.FormattingEnabled = true;
-            this.listSteps.Location = new System.Drawing.Point(542, 12);
-            this.listSteps.Name = "listSteps";
-            this.listSteps.Size = new System.Drawing.Size(587, 36);
-            this.listSteps.TabIndex = 16;
+            this.buttonOpenVariant.Click += new System.EventHandler(this.buttonOpenVariant_Click);
             // 
             // label6
             // 
@@ -225,20 +202,73 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "Steps";
             // 
+            // buttonSaveChange
+            // 
+            this.buttonSaveChange.Location = new System.Drawing.Point(288, 12);
+            this.buttonSaveChange.Name = "buttonSaveChange";
+            this.buttonSaveChange.Size = new System.Drawing.Size(143, 39);
+            this.buttonSaveChange.TabIndex = 18;
+            this.buttonSaveChange.Text = "Save Change";
+            this.buttonSaveChange.UseVisualStyleBackColor = true;
+            this.buttonSaveChange.Click += new System.EventHandler(this.buttonSaveChange_Click);
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Location = new System.Drawing.Point(838, 391);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(165, 43);
+            this.buttonRemove.TabIndex = 20;
+            this.buttonRemove.Text = "Remove variant";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            // 
+            // listSteps
+            // 
+            this.listSteps.FormattingEnabled = true;
+            this.listSteps.ItemHeight = 28;
+            this.listSteps.Location = new System.Drawing.Point(563, 12);
+            this.listSteps.Name = "listSteps";
+            this.listSteps.Size = new System.Drawing.Size(566, 144);
+            this.listSteps.TabIndex = 21;
+            this.listSteps.SelectedIndexChanged += new System.EventHandler(this.listSteps_SelectedIndexChanged);
+            // 
+            // fieldVariants
+            // 
+            this.fieldVariants.FormattingEnabled = true;
+            this.fieldVariants.Location = new System.Drawing.Point(101, 398);
+            this.fieldVariants.Name = "fieldVariants";
+            this.fieldVariants.Size = new System.Drawing.Size(435, 36);
+            this.fieldVariants.TabIndex = 23;
+            // 
+            // fieldAction
+            // 
+            this.fieldAction.FormattingEnabled = true;
+            this.fieldAction.Items.AddRange(new object[] {
+            "Agressive",
+            "Friendly",
+            "Ignore",
+            "Empty"});
+            this.fieldAction.Location = new System.Drawing.Point(101, 357);
+            this.fieldAction.Name = "fieldAction";
+            this.fieldAction.Size = new System.Drawing.Size(435, 36);
+            this.fieldAction.TabIndex = 24;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1141, 469);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.fieldAction);
+            this.Controls.Add(this.fieldVariants);
             this.Controls.Add(this.listSteps);
+            this.Controls.Add(this.buttonRemove);
+            this.Controls.Add(this.buttonSaveChange);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.buttonOpenVariant);
             this.Controls.Add(this.buttonAddVariant);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.fieldIsEnd);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.fieldVariants);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.fieldAction);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.fieldNumberPicture);
             this.Controls.Add(this.label2);
@@ -269,14 +299,17 @@
         private SaveFileDialog saveFileDialog;
         private NumericUpDown fieldNumberPicture;
         private Label label3;
-        private ListBox fieldAction;
         private Label label4;
         private Label label5;
-        private ListBox fieldVariants;
-        private CheckBox checkBox1;
+        private CheckBox fieldIsEnd;
         private Button buttonAddVariant;
         private Button buttonOpenVariant;
-        private ComboBox listSteps;
         private Label label6;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Button buttonSaveChange;
+        private Button buttonRemove;
+        private ListBox listSteps;
+        private ComboBox fieldVariants;
+        private ComboBox fieldAction;
     }
 }

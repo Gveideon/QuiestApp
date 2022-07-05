@@ -8,12 +8,16 @@ namespace QuestEngine
 {
     public class Step
     {
-        public string Name { get; private set; } = "step";
-        public string Phrase { get; private set; } = "base phrase";
-        public List<Step> VariantTransition { get; private set; } = new List<Step>();
-        public int NumberPicture { get; private set; } = 0;
-        public TypeAction Action { get; private set; }
+        public string Name { get; set; } = "step";
+        public string Phrase { get;  set; } = "base phrase";
+        public List<Step> VariantTransition { get; set; } = new List<Step>();
+        public int NumberPicture { get; set; } = 1;
+        public TypeAction Action { get; set; } = TypeAction.Empty;
 
-        public bool IsEndStep = false;  
+        public bool IsEndStep { get; set; } = false;
+        public override string ToString()
+        {
+            return Name.ToString();
+        }
     }
 }
