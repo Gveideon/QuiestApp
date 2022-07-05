@@ -30,6 +30,7 @@ namespace QuestEngine
 
         public void MakeAggressiveAction()
         {
+            //tried
             Step? temp = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Agressive).FirstOrDefault();
             currentStep = temp != null ? temp : currentStep;
             Update();
