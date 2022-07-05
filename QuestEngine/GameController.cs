@@ -28,7 +28,7 @@ namespace QuestEngine
         }
 
 
-        public void MakeAggressiveAction()
+        public bool MakeAggressiveAction()
         {
             //tried
             Step? temp = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Agressive).FirstOrDefault();
@@ -39,7 +39,7 @@ namespace QuestEngine
         }
 
 
-        public void MakeFriendlyAction() 
+        public bool MakeFriendlyAction() 
         {
             Step? temp = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Friendly).FirstOrDefault();
             currentStep = temp !=null ? temp: currentStep;
@@ -49,7 +49,7 @@ namespace QuestEngine
         }
 
 
-        public void MakeIgnoreAction() 
+        public bool MakeIgnoreAction() 
         {
             Step? temp = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Ignore).FirstOrDefault();
             currentStep = temp != null ? temp : currentStep;
