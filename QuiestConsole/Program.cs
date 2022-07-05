@@ -25,8 +25,14 @@ namespace QuestConsole
             {
                 Console.Write(".");
                 System.Threading.Thread.Sleep(500);
+                if (Console.KeyAvailable)
+                    if ((s = Console.ReadKey().Key) == ConsoleKey.Enter)
+                        isExit = true;
                 Console.Write(".");
                 System.Threading.Thread.Sleep(500);
+                if (Console.KeyAvailable)
+                    if ((s = Console.ReadKey().Key) == ConsoleKey.Enter)
+                        isExit = true;
                 Console.Write(".");
                 System.Threading.Thread.Sleep(500);
                 Console.Write("\r");
@@ -42,15 +48,16 @@ namespace QuestConsole
 
         public static void Main(string[] args)
         {
+
             GameController gameController = new GameController();
             string[] actions = {"Агрессивный", "Дружелюбный" , "Игнорироющий", "Reset", "Exit"};
             var s = "";
             PrintGreeting();
-
+            Console.WriteLine(gameController.CurrentPhrase);
             while (true)
             {
                 PrintSelectionOfActivities();
-
+                var isPossibilityMove = true;
                 var key = ConsoleKey.A;
                 int numberOfAction = -1;
                 while ((key = Console.ReadKey().Key) == ConsoleKey.Tab || (key != ConsoleKey.Enter || numberOfAction == -1))
@@ -66,8 +73,6 @@ namespace QuestConsole
                     }
                 }
                 Console.WriteLine();
-                if ((s = Console.ReadLine()?.ToLower()) == "Exit")
-                    break;
                 if (s == "Reset")
                 {
                     Console.Clear();
@@ -77,15 +82,21 @@ namespace QuestConsole
                 }
 
                 if (s == "Агрессивный")
-                    gameController.MakeAggressiveAction();
+                   isPossibilityMove = gameController.MakeAggressiveAction();
                 else if (s == "Дружелюбный")
-                    gameController.MakeFriendlyAction();
+                    isPossibilityMove = gameController.MakeFriendlyAction();
                 else if (s == "Игнорироющий")
-                    gameController.MakeIgnoreAction();
+                    isPossibilityMove = gameController.MakeIgnoreAction();
                 else
                     Console.WriteLine("Такой фразы не существует! Выберете из списка существующих!!!");
-                Console.WriteLine(gameController.CurrentPhrase);
-
+                if (isPossibilityMove)
+                    Console.WriteLine(gameController.CurrentPhrase);
+                else
+                    Console.WriteLine(" ты не можешь так поступить");
+                if (s.ToLower() == "exit" || gameController.IsEnd)
+                {
+                    break;
+                }
                 PrintAsterix(s);
             }
 

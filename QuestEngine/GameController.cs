@@ -20,20 +20,29 @@ namespace QuestEngine
         {
             LoadQuest();
         }
-        public void MakeAggressiveAction()
+        public bool MakeAggressiveAction()
         {
-            currentStep = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Agressive).First();
+            Step? temp = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Agressive).FirstOrDefault();
+            currentStep = temp != null ? temp : currentStep;
             Update();
+            if (currentStep == temp) return true;
+            else return false;
         }
-        public void MakeFriendlyAction() 
+        public bool MakeFriendlyAction() 
         {
-            currentStep = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Friendly).First();
+            Step? temp = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Friendly).FirstOrDefault();
+            currentStep = temp !=null ? temp: currentStep;
             Update();
+            if (currentStep == temp) return true;
+            else return false;
         }
-        public void MakeIgnoreAction() 
+        public bool MakeIgnoreAction() 
         {
-            currentStep = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Ignore).First();
+            Step? temp = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Ignore).FirstOrDefault();
+            currentStep = temp != null ? temp : currentStep;
             Update();
+            if (currentStep == temp) return true;
+            else return false;
         }
         private void LoadQuest() 
         {

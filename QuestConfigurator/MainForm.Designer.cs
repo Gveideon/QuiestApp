@@ -244,10 +244,10 @@
             // 
             this.fieldAction.FormattingEnabled = true;
             this.fieldAction.Items.AddRange(new object[] {
+            "Empty",
             "Agressive",
             "Friendly",
-            "Ignore",
-            "Empty"});
+            "Ignore"});
             this.fieldAction.Location = new System.Drawing.Point(101, 357);
             this.fieldAction.Name = "fieldAction";
             this.fieldAction.Size = new System.Drawing.Size(435, 36);

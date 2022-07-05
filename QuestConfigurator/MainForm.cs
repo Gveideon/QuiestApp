@@ -11,16 +11,16 @@ namespace QuestConfigurator
         private string path = "text.json";
         private int currentIndex = 0;
         private Dictionary<string, int> actionsToIndex = new Dictionary<string, int> {
-            ["Agressive"] = 0,
-            ["Friendly"] = 1,
-            ["Ignore"] = 2,
-            ["Empty"] = 3 };
+            ["Agressive"] = 1,
+            ["Friendly"] = 2,
+            ["Ignore"] = 3,
+            ["Empty"] = 0 };
         private Dictionary<int,string > indexToActions = new Dictionary<int,string >
         {
-            [0] = "Agressive",
-            [1] ="Friendly" ,
-            [2] = "Ignore",
-            [3] ="Empty" 
+            [1] = "Agressive",
+            [2] ="Friendly" ,
+            [3] = "Ignore",
+            [0] ="Empty" 
         };
         public MainForm()
         {
