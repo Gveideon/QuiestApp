@@ -19,28 +19,28 @@ namespace QuestWinForm
 
         private void StartForm_Load(object sender, EventArgs e)
         {
-            timer.Start();
+            //timer.Start();
             label1.Parent = pictureBackground;
             label1.BackColor = Color.Transparent;
             label1.Visible = false;
-            buttonStart.Enabled = false;
+            //buttonStart.Enabled = false;
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
             Hide();
-            timer.Stop();
+           // timer.Stop();
             new MainForm().Show();
-            Close();
+           // Close();
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            if(label1.Visible == true)
-                buttonStart.Enabled = true;
-            if (timer.Interval == 3000)
-                timer.Interval = 7000;
-            label1.Visible = true;
+            //if(label1.Visible == true)
+            //    buttonStart.Enabled = true;
+            //if (timer.Interval == 3000)
+            //    timer.Interval = 7000;
+            //label1.Visible = true;
         }
     }
 }
