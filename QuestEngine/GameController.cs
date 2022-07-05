@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using System.IO;
 
 namespace QuestEngine
@@ -27,26 +27,42 @@ namespace QuestEngine
             LoadQuest();
         }
 
+
         public void MakeAggressiveAction()
         {
-            currentStep = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Agressive).First();
+            Step? temp = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Agressive).FirstOrDefault();
+            currentStep = temp != null ? temp : currentStep;
             Update();
+            if (currentStep == temp) return true;
+            else return false;
         }
+
 
         public void MakeFriendlyAction() 
         {
-            currentStep = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Friendly).First();
+            Step? temp = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Friendly).FirstOrDefault();
+            currentStep = temp !=null ? temp: currentStep;
             Update();
+            if (currentStep == temp) return true;
+            else return false;
         }
+
 
         public void MakeIgnoreAction() 
         {
-            currentStep = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Ignore).First();
+            Step? temp = currentStep.VariantTransition.Where(x => x.Action == TypeAction.Ignore).FirstOrDefault();
+            currentStep = temp != null ? temp : currentStep;
             Update();
+            if (currentStep == temp) return true;
+            else return false;
         }
         private void LoadQuest() 
         {
-            currentStep = FileProvider<Step>.ReadObject(path); 
+            currentStep = FileProvider<Step>.ReadObject(path);
+            if (currentStep == null)
+            {
+                return;
+            }
             Update();
 
         }
@@ -61,5 +77,4 @@ namespace QuestEngine
             }
         }
     }
-
 }

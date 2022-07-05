@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuestEngine
 {
-    internal class FileProvider<T>
+   public class FileProvider<T>
     {
         public static T ReadObject(string path)
         {
