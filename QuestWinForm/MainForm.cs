@@ -1,7 +1,7 @@
+using QuestEngine;
+
 namespace QuestWinForm
 {
-    using QuestEngine;
-
     public partial class MainForm : Form
     {
         private GameController _gameController;
@@ -15,6 +15,10 @@ namespace QuestWinForm
         {
             _gameController = new GameController();
             fieldForPhrase.BackColor = Color.FromArgb(214, 243, 101);
+            label1.Parent = fieldBackground;
+            label1.BackColor = Color.Transparent;
+            timer.Start();
+            
         }
 
         private void buttonAgressiveAction_Click(object sender, EventArgs e)
@@ -47,6 +51,16 @@ namespace QuestWinForm
             var resource = ResourceQuest.ResourceManager.GetObject(name);
             if (resource == null) return null;
             return resource as Bitmap;
+        }
+
+        private void Waiting()
+        {
+
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

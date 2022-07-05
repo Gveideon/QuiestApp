@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonAgressiveAction = new System.Windows.Forms.Button();
             this.buttonFriendlyAction = new System.Windows.Forms.Button();
             this.buttonIgnoreAction = new System.Windows.Forms.Button();
-            this.fieldForPhrase = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.fieldBackground = new System.Windows.Forms.PictureBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.fieldForPhrase = new System.Windows.Forms.RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.fieldBackground)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAgressiveAction
@@ -71,14 +75,6 @@
             this.buttonIgnoreAction.UseVisualStyleBackColor = true;
             this.buttonIgnoreAction.Click += new System.EventHandler(this.buttonIgnoreAction_Click);
             // 
-            // fieldForPhrase
-            // 
-            this.fieldForPhrase.Location = new System.Drawing.Point(12, 345);
-            this.fieldForPhrase.Name = "fieldForPhrase";
-            this.fieldForPhrase.Size = new System.Drawing.Size(1033, 141);
-            this.fieldForPhrase.TabIndex = 3;
-            this.fieldForPhrase.Text = "";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -89,19 +85,43 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Как вы поступите?";
             // 
+            // fieldBackground
+            // 
+            this.fieldBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fieldBackground.Location = new System.Drawing.Point(0, 0);
+            this.fieldBackground.Name = "fieldBackground";
+            this.fieldBackground.Size = new System.Drawing.Size(1057, 603);
+            this.fieldBackground.TabIndex = 5;
+            this.fieldBackground.TabStop = false;
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // fieldForPhrase
+            // 
+            this.fieldForPhrase.Location = new System.Drawing.Point(12, 345);
+            this.fieldForPhrase.Name = "fieldForPhrase";
+            this.fieldForPhrase.Size = new System.Drawing.Size(1033, 141);
+            this.fieldForPhrase.TabIndex = 3;
+            this.fieldForPhrase.Text = "";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1057, 603);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.fieldForPhrase);
-            this.Controls.Add(this.buttonIgnoreAction);
-            this.Controls.Add(this.buttonFriendlyAction);
             this.Controls.Add(this.buttonAgressiveAction);
+            this.Controls.Add(this.buttonIgnoreAction);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonFriendlyAction);
+            this.Controls.Add(this.fieldForPhrase);
+            this.Controls.Add(this.fieldBackground);
             this.Name = "MainForm";
             this.Text = "Прогулка по знакомым равнинам";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.fieldBackground)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,7 +132,9 @@
         private Button buttonAgressiveAction;
         private Button buttonFriendlyAction;
         private Button buttonIgnoreAction;
-        private RichTextBox fieldForPhrase;
         private Label label1;
+        private PictureBox fieldBackground;
+        private System.Windows.Forms.Timer timer;
+        private RichTextBox fieldForPhrase;
     }
 }
