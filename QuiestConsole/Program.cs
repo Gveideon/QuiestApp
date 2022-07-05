@@ -76,16 +76,16 @@ namespace QuestConsole
                     continue;
                 }
 
-                s = gameController.CurrentPhrase;
-
-                if (s == "1")
+                if (s == "Агрессивный")
                     gameController.MakeAggressiveAction();
-                else if (s == "2")
+                else if (s == "Дружелюбный")
                     gameController.MakeFriendlyAction();
-                else if (s == "3")
+                else if (s == "Игнорироющий")
                     gameController.MakeIgnoreAction();
                 else
                     Console.WriteLine("Такой фразы не существует! Выберете из списка существующих!!!");
+                Console.WriteLine(gameController.CurrentPhrase);
+
                 PrintAsterix(s);
             }
 
