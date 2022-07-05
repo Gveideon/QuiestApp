@@ -10,7 +10,5 @@
         public void MakeAggressiveAction() { }
         public void MakeFriendlyAction() { }
         public void MakeIgnoreAction() { }
-
     }
-
 }
