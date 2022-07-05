@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using System.IO;
 using System.Windows;
 using Microsoft.Win32;
@@ -55,5 +55,4 @@ namespace QuestEngine
             }
         }
     }
-
 }
