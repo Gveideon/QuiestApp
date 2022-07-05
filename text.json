@@ -1,0 +1,35 @@
+{
+  
+  "Name": "step1",
+  "Phrase": "base phrase1",
+  "VariantTransition": [
+    {
+      "Name": "step2",
+      "Phrase": "base phrase2",
+      "VariantTransition": [
+        {
+          "Name": "step3",
+          "Phrase": "base phrase3",
+          "VariantTransition": [],
+          "NumberPicture": 3,
+          "Action": 1,
+          "IsEndStep": true
+        },
+        {
+          "Name": "step4",
+          "Phrase": "base phrase4",
+          "VariantTransition": [],
+          "NumberPicture": 4,
+          "Action": 2,
+          "IsEndStep": true
+        }
+      ],
+      "NumberPicture": 2,
+      "Action": 3,
+      "IsEndStep": false
+    }
+  ],
+  "NumberPicture": 1,
+  "Action": 0,
+  "IsEndStep": false
+}
